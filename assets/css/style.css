@@ -1,3 +1,21 @@
 button, div, form, input {
     margin: 10px;
 }
+
+body {
+    width: 100%;
+}
+
+img, h5{
+    display: inline;
+    margin:20px;
+    cursor: pointer;
+}
+
+.newGiphy {
+    display: block;
+}
+
+.single {
+    display: inline-block;
+}
