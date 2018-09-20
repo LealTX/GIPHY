@@ -19,7 +19,7 @@ $(document).ready(function () {
         });
     }
     
-    // Display Gifs when click
+    // Display Gifs when button click
     function displayGifs() {
                
         var searchTopic = $(this).attr("data-name");
@@ -30,25 +30,28 @@ $(document).ready(function () {
             url: apiURL,
             method:"GET"
         }).then(function(response) {
-            console.log(response);
             $("#giphy-view").empty();
 
             var giphyDiv = $("<div class='newGiphy'>");
             
             var giphyLength = response.data.length;
-            console.log(giphyLength);
 
             for(var i = 0; i < giphyLength; i++){
                 var newRow = $("<tr>");
                 var indDiv = $("<div class='single'>");
                 var grabRating = response.data[i].rating;
                 var pRating = $("<h5>").text("Rating: "+grabRating);
-                console.log(pRating);
                 
-                var grabStill = response.data[i].images.fixed_height_small_still.url;
-                var stillImage = $("<img class='singleImage'>").attr("src", grabStill);
-
-                indDiv.prepend(stillImage);
+                var grabStill = response.data[i].images.fixed_height_still.url;
+                var grabAnimate = response.data[i].images.fixed_height.url;
+                var imageElmt = $("<img>");
+                imageElmt.addClass("giphyImg");
+                imageElmt.attr("src", grabStill);
+                imageElmt.attr("data-status","still");
+                imageElmt.attr("data-still", grabStill);
+                imageElmt.attr("data-animate", grabAnimate);
+                
+                indDiv.prepend(imageElmt);
                 newRow.prepend(pRating);
                 indDiv.prepend(newRow);
                 giphyDiv.append(indDiv);
@@ -58,9 +61,30 @@ $(document).ready(function () {
         })
     }
 
+    // Start and Stop Animations when clicked 
+    function animateGif() {
+        if( $(this).attr("data-status") === "still" ){
+            $(this).attr("data-status", "animate");
+            $(this).attr("src", $(this).attr("data-animate"));
+        }else {
+            $(this).attr("data-status", "still");
+            $(this).attr("src", $(this).attr("data-still"));
+        }
+    }
+
     // Run Function to Show Giphys
     $(document).on("click",".topic-btn",displayGifs);
-    $(document).on("click",".singleImage",displayGifs);
+    // Starts animateGif Function
+    $(document).on("click",".giphyImg",animateGif);
+
+    // Add New Buttons 
+    $("#add-giphy").on("click", function(){
+        event.preventDefault();
+        var giphyNew = $("#giphy-input").val().trim();
+        $("#giphy-input").val("");
+        topics.push(giphyNew);
+        showButtons();
+    })
 
     showButtons();
 
