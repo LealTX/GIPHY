@@ -10,7 +10,7 @@ $(document).ready(function () {
             var topic = topics[i];
             topicNoSpace = topic.split(" ").join("+");
             // console.log(topicNoSpace);
-            var newButton = $("<button>");
+            var newButton = $("<button class='btn-secondary'>");
             newButton.addClass("topic-btn");
             newButton.attr("data-name",topicNoSpace);
             newButton.text(topic);
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
             for(var i = 0; i < giphyLength; i++){
                 var newRow = $("<tr>");
-                var indDiv = $("<div class='single'>");
+                var indDiv = $("<div class='single text-white'>");
                 var grabRating = response.data[i].rating;
                 var pRating = $("<h5>").text("Rating: "+grabRating);
                 

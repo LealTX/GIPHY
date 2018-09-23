@@ -4,6 +4,7 @@ button, div, form, input {
 
 body {
     width: 100%;
+    background-image: url(../images/widescreen-cool-dark.jpg);
 }
 
 img, h5{
@@ -18,4 +19,12 @@ img, h5{
 
 .single {
     display: inline-block;
+}
+
+h1, h5 {
+    font-family: 'Sigmar One', cursive;
+}
+
+button, input {
+    font-family: 'Bevan', cursive;
 }

@@ -12,29 +12,35 @@
     <!-- Link to CSS -->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Bevan|Sigmar+One" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="container">
-        <h1>GIPHY Search</h1>
+        <div class="d-flex justify-content-center text-white">
+            <h1>GIPHY Search</h1>
+        </div>
 
         <!-- Rendered buttons will get dumped here  -->
-        <div id="buttons-view"></div>
+        <div class="d-flex justify-content-center">
+            <div id="buttons-view"></div>
+        </div>
 
         <form id="giphy-form">
-            <label for="giphy-input">Add GIPHY</label>
-            <input type="text" id="giphy-input">
-            <br>
+            <div class="form-group">
+                <input type="text" id="giphy-input" class="form-control" placeholder="Add Giphy...">
 
-            <!-- Button triggers new movie to be added -->
-            <input id="add-giphy" type="submit" value="Add GIPHY">
+                <!-- Button triggers new movie to be added -->
+                <input id="add-giphy" type="submit" class="btn-primary" value="Add GIPHY">
+            </div>
         </form>
 
         <!-- giphy will get dumped Here -->
         <div id="giphy-view"></div>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 
         <script src="./assets/javascript/giphy.js"></script>
 </body>
